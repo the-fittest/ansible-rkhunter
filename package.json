@@ -1,0 +1,61 @@
+{
+  "name": "ansible-rkhunter",
+  "version": "1.0.0",
+  "description": "A role to install Rootkit Hunter",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://github.com/the-fittest/ansible-rkhunter.git"
+  },
+  "author": "Alexander Jaeger",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/the-fittest/ansible-rkhunter/issues"
+  },
+  "homepage": "https://github.com/the-fittest/ansible-rkhunter#readme",
+  "scripts": {
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "precommit": "yamllint -c ./.yamllint . && ansible-lint -R -r ./node_modules/ansible-lint-rules/rules . || exit 1",
+    "develop": "nodemon"
+  },
+  "commitlint": {
+    "extends": [
+      "./node_modules/@commitlint/config-conventional"
+    ]
+  },
+  "nodemonConfig": {
+    "exec": "yamllint -c ./.yamllint . && ansible-lint -R -r ./node_modules/ansible-lint-rules/rules . || exit 1",
+    "ext": "yml"
+  },
+  "release": {
+    "verifyConditions": [
+      "@semantic-release/github"
+    ],
+    "prepare": [
+      {
+        "path": "@semantic-release/changelog",
+        "changelogFile": "CHANGELOG.md"
+      },
+      {
+        "path": "@semantic-release/git",
+        "assets": "CHANGELOG.md"
+      }
+    ],
+    "publish": [
+      "@semantic-release/github",
+      {
+        "path": "semantic-release",
+        "name": "the-fittest/ansible-rkhunter"
+      }
+    ],
+    "tagFormat": "${version}"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^6.1.2",
+    "@commitlint/config-conventional": "^6.1.2",
+    "@semantic-release/exec": "^2.0.1",
+    "husky": "^0.14.3",
+    "semantic-release": "^15.13.15",
+    "nodemon": "^1.17.1",
+    "ansible-lint-rules": "^1.0.1"
+  }
+}

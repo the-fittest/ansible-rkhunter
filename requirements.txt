@@ -1,0 +1,3 @@
+ansible>=2.4, <3
+docker>=3.5.0, <4
+molecule>=2.9, <3

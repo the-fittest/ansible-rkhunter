@@ -1,0 +1,16 @@
+---
+galaxy_info:
+  author: Alexander Jaeger
+  description: A role to install Rootkit Hunter
+  company: The Fittest. UG (haftungsbeschraenkt)
+  license: MIT
+  min_ansible_version: 2.4
+  platforms:
+    - name: Ubuntu
+      versions:
+        # 18.04
+        - bionic
+        # 16.04
+        - xenial
+  galaxy_tags: []
+dependencies: []

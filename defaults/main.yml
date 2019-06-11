@@ -1,0 +1,14 @@
+---
+# defaults file for ansible-rkhunter
+rkhunter_mail_to: root
+
+rkhunter_packages:
+  - rkhunter
+
+rkhunter_additional_packages: []
+
+rkhunter_config_files:
+  - rkhunter.conf.j2
+
+rkhunter_cron_config_files:
+  - rkhunter.j2

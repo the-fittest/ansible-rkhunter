@@ -1,0 +1,19 @@
+# {{ ansible_managed }}
+ALLOWPROCLISTEN=/sbin/dhclient
+AUTO_X_DETECT=1
+DBDIR=/var/lib/rkhunter/db
+DISABLE_TESTS=suspscan hidden_procs deleted_files packet_cap_apps apps group_accounts local_host shared_libs system_commands avail_modules
+DISABLE_UNHIDE=1
+ENABLE_TESTS=all
+HASH_CMD=sha256sum
+INSTALLDIR=/usr
+LOGFILE=/var/log/rkhunter.log
+PKGMGR=DPKG
+SCRIPTDIR=/usr/share/rkhunter/scripts
+SCRIPTWHITELIST=/bin/egrep
+SCRIPTWHITELIST=/bin/fgrep
+SCRIPTWHITELIST=/bin/which
+SCRIPTWHITELIST=/usr/bin/ldd
+SCRIPTWHITELIST=/usr/sbin/adduser
+TMPDIR=/var/lib/rkhunter/tmp
+USE_SYSLOG=authpriv.warning

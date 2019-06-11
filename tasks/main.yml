@@ -1,0 +1,35 @@
+---
+# tasks file for ansible-rkhunter
+
+- name: Install rkhunter
+  package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "{{ rkhunter_packages }}"
+    - "{{ rkhunter_additional_packages }}"
+
+- name: Add rkhunter config
+  template:
+    src: "{{ item }}"
+    dest: "/etc/{{ item | basename | replace('.j2', '') }}"
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - "{{ rkhunter_config_files }}"
+
+- name: Add rkhunter cron config
+  template:
+    src: "{{ item }}"
+    dest: "/etc/default/{{ item | basename | replace('.j2', '') }}"
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - "{{ rkhunter_cron_config_files }}"
+
+- name: Update Rootkit DB
+  command: rkhunter --update --nocolors
+  args:
+    creates: /var/lib/rkhunter/db/rkhunter.dat

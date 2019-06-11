@@ -1,0 +1,6 @@
+---
+# default file for ansible-rkhunter
+
+package:
+  rkhunter:
+    installed: true
